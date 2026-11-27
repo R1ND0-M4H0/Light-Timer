@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가벼운 타이머 - 집중하기</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<!-- 내가 주제를 잘못잡았나 JS없이는 아무것도 안돌아가는데 흠 -->
+
+<body>
+  <header>
+    <div class="clock-box">
+      <p class="clock-time">HH:MM:SS</p>
+      <p class="clock-date">20nn.MM.DD</p>
+      <!-- 시계는 JS 써야할듯 -->
+    </div>
+    <h1 class="header-title">가벼운 타이머</h1>
+  </header>
+
+  <main>
+    <nav>
+      <ul>
+        <li><a href="calendar.html" class="nav-circle">캘린더</a></li>
+        <li><a href="memo.html" class="nav-circle">메모장</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      <!-- 타이머 기능 전체도 JS 써야하는데 AI한테 짬처리 시켜야될듯 -->
+      <div class="timer-wrapper">
+        <div class="pomodoro-ring">
+          <div class="pomodoro-inner">
+            <div class="repeat-control">
+              <span class="repeat-label">반복</span>
+              <div class="repeat-stepper">
+                <button type="button" class="circle-arrow-btn" aria-label="반복 횟수 감소">&lt;</button>
+                <span class="repeat-value">2</span>
+                <button type="button" class="circle-arrow-btn" aria-label="반복 횟수 증가">&gt;</button>
+              </div>
+            </div>
+
+            <div class="dial-row">
+              <div class="dial-group">
+                <label for="focus-length" class="dial-label">작업</label>
+                <div class="dial-circle">
+                  <button type="button" class="chevron-btn" aria-label="작업 시간 증가">&#8963;</button>
+                  <input type="number" id="focus-length" name="focus-length" class="dial-input" value="30" min="1">
+                  <button type="button" class="chevron-btn" aria-label="작업 시간 감소">&#8964;</button>
+                </div>
+              </div>
+
+              <div class="dial-group">
+                <label for="break-length" class="dial-label">휴식</label>
+                <div class="dial-circle">
+                  <button type="button" class="chevron-btn" aria-label="휴식 시간 증가">&#8963;</button>
+                  <input type="number" id="break-length" name="break-length" class="dial-input" value="5" min="1">
+                  <button type="button" class="chevron-btn" aria-label="휴식 시간 감소">&#8964;</button>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" class="play-btn" aria-label="타이머 시작">
+              <span class="play-icon"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="timer-sub-controls">
+          <button type="button" class="sub-btn">일시 정지</button>
+          <button type="button" class="sub-btn">초기화</button>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <ul>
+        <li><a href="todo.html" class="nav-circle">ToDo</a></li>
+        <li><a href="aboutme.html" class="nav-circle">About<br>Me</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <p>가벼운 타이머 · Pomodoro Focus Workspace</p>
+  </footer>
+</body>
+</html>

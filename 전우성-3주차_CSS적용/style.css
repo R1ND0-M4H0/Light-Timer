@@ -1,0 +1,573 @@
+/* ==========================================================================
+   가벼운 타이머 - 공통 스타일시트
+   레이아웃 구조: header / main (nav, section, aside) / footer
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #CED4DA;
+  background: linear-gradient(90deg, rgba(206, 212, 218, 1) 0%, rgba(52, 58, 64, 1) 100%);
+  font-family: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #f8f9fa;
+}
+
+/* --------------------------------------------------------------------------
+   1. Header (상단 영역: 좌측 시계/날짜, 우측 미니 타이머 또는 타이틀)
+   -------------------------------------------------------------------------- */
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 36px;
+  gap: 16px;
+}
+
+.clock-box {
+  background: rgba(22, 24, 41, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 12px 26px;
+  text-align: center;
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.clock-box .clock-time {
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.clock-box .clock-date {
+  font-size: 0.85rem;
+  color: #ced4da;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+.header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f8f9fa;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.mini-timer-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: rgba(22, 24, 41, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  padding: 10px 24px;
+  min-width: 200px;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mini-timer-link:hover {
+  transform: translateY(-2px);
+  border-color: #00f2fe;
+  box-shadow: 0 10px 26px rgba(0, 242, 254, 0.22);
+}
+
+.mini-timer-link .mini-timer-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.mini-timer-link .mini-timer-label {
+  font-size: 0.78rem;
+  color: #adb5bd;
+  margin-top: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Main 3단 레이아웃 (좌측 nav / 중앙 section / 우측 aside)
+   -------------------------------------------------------------------------- */
+main {
+  flex: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  align-items: stretch;
+  gap: 24px;
+  padding: 12px 36px 28px;
+}
+
+nav,
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul,
+aside ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* 다른 HTML로 이동하는 <a href> 원형 버튼 */
+.nav-circle {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f8f9fa;
+  background: rgba(22, 24, 41, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.nav-circle:hover {
+  transform: translateY(-3px) scale(1.06);
+  border-color: #00f2fe;
+  box-shadow: 0 10px 26px rgba(0, 242, 254, 0.28);
+  background: rgba(30, 33, 56, 0.95);
+}
+
+.nav-circle.active {
+  border-color: #ff007f;
+  box-shadow: 0 0 0 3px rgba(255, 0, 127, 0.22), 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* 중앙 주요 기능 표시 영역 */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. 랜딩 페이지 포모도로 타이머 (3번 이미지 스타일)
+   -------------------------------------------------------------------------- */
+.timer-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.pomodoro-ring {
+  width: 408px;
+  height: 408px;
+  border-radius: 50%;
+  padding: 6px;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 40%, #d946ef 78%, #ff007f 100%);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.pomodoro-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #161829;
+  box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 28px 28px;
+}
+
+.repeat-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.repeat-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.repeat-stepper {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.repeat-value {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  min-width: 28px;
+  text-align: center;
+}
+
+.circle-arrow-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: #9aa0bc;
+  color: #161829;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.circle-arrow-btn:hover {
+  background: #c5cbe3;
+  transform: scale(1.08);
+}
+
+.dial-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.dial-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dial-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.dial-circle {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background: #1d2036;
+  border: 2px solid #595e7d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+}
+
+.chevron-btn {
+  background: transparent;
+  border: none;
+  color: #8f95b2;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 12px;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.chevron-btn:hover {
+  color: #ffffff;
+  transform: scale(1.15);
+}
+
+.dial-input {
+  width: 78px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2.4rem;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  font-family: inherit;
+  -moz-appearance: textfield;
+}
+
+.dial-input::-webkit-outer-spin-button,
+.dial-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.play-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: none;
+  background: #9aa0bc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.play-btn:hover {
+  background: #b8bed8;
+  transform: scale(1.06);
+}
+
+.play-icon {
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  border-left: 24px solid #161829;
+}
+
+.timer-sub-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sub-btn {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(22, 24, 41, 0.72);
+  color: #e9ecef;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.sub-btn:hover {
+  background: rgba(30, 33, 56, 0.95);
+  border-color: #00f2fe;
+}
+
+/* --------------------------------------------------------------------------
+   4. 서브페이지 공통 카드 & 폼/테이블/리스트 스타일
+   -------------------------------------------------------------------------- */
+.content-card {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(22, 24, 41, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 20px;
+  padding: 32px 36px;
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+}
+
+.content-card h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  padding-bottom: 12px;
+}
+
+.content-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  color: #e2e8f0;
+}
+
+.content-card p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #ced4da;
+  margin-bottom: 10px;
+}
+
+.content-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.content-card form p {
+  margin-bottom: 2px;
+}
+
+.content-card label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e9ecef;
+}
+
+.content-card input[type="text"],
+.content-card input[type="date"],
+.content-card input[type="number"],
+.content-card textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.content-card input:focus,
+.content-card textarea:focus {
+  border-color: #00f2fe;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.content-card textarea {
+  max-width: 100%;
+  min-height: 120px;
+  max-height: 280px;
+  resize: vertical;
+}
+
+.aboutme-profile {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 20px;
+}
+
+.aboutme-img {
+  max-width: 340px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+}
+
+.content-card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.content-card caption {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #adb5bd;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.content-card th,
+.content-card td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+}
+
+.content-card th {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.content-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.content-card ul li {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.92rem;
+  color: #dee2e6;
+}
+
+/* --------------------------------------------------------------------------
+   5. Footer (하단 영역)
+   -------------------------------------------------------------------------- */
+footer {
+  width: 100%;
+  padding: 14px 36px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #e9ecef;
+  background: rgba(22, 24, 41, 0.45);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+/* --------------------------------------------------------------------------
+   6. 반응형 (모바일/좁은 화면 대응)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 16px 20px;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    padding: 12px 20px 24px;
+  }
+
+  nav ul,
+  aside ul {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .nav-circle {
+    width: 80px;
+    height: 80px;
+    font-size: 0.88rem;
+  }
+
+  .pomodoro-ring {
+    width: 300px;
+    height: 300px;
+  }
+
+  .dial-circle {
+    width: 92px;
+    height: 92px;
+  }
+
+  .content-card {
+    padding: 24px 20px;
+  }
+}
